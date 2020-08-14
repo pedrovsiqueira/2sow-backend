@@ -1,0 +1,8 @@
+{
+  "name": "2sow",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/pedrovsiqueira/2sow-backend.git",
+  "author": "pedrovsiqueira <pedro.v.siqueira@gmail.com>",
+  "license": "MIT"
+}
