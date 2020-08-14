@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/pedrovsiqueira/2sow-backend.git",
   "author": "pedrovsiqueira <pedro.v.siqueira@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
