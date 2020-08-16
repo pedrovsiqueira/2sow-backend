@@ -6,6 +6,8 @@
   "author": "pedrovsiqueira <pedro.v.siqueira@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "node dist/server.js",
+    "build": "tsc",
     "dev": "ts-node-dev --inspect --ignore-watch node_modules src/server.ts"
   },
   "dependencies": {
