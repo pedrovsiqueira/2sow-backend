@@ -2,7 +2,7 @@
 
 ## About The Project
 
-The challenge was to build a system for user registration. I created a home, login, signup, users, create user and edit user screens. The site is responsive from 414px up. This is the front end of the application. To access the front end, go to the following repository: https://github.com/pedrovsiqueira/2sow.
+The challenge was to build a system for user registration. I created a home, login, signup, users, create user and edit user screens. The site is responsive from 414px up. This is the back end of the application. To access the front end, go to the following repository: https://github.com/pedrovsiqueira/2sow.
 
 ### Built With:
 
