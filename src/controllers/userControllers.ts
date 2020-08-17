@@ -12,12 +12,14 @@ interface IResults {
     page: Number;
     limit: Number;
   };
+  totalPages: Number;
 }
 
 export default class UsersController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { nome, cpf, email, cep, rua, numero, bairro, cidade } = request.body;
 
+    console.log(request.body);
     for (const field of userDataArray) {
       if (!request.body[field]) {
         return response.status(400).json({
@@ -53,6 +55,7 @@ export default class UsersController {
 
     const startIndex = (Number(page) - 1) * Number(limit);
     const endIndex = Number(page) * Number(limit);
+    const results: IResults = {} as IResults;
 
     try {
       let dbQuery = {
@@ -67,21 +70,26 @@ export default class UsersController {
         nome: new RegExp(String(searchValue), 'i'),
       });
 
-      const results: IResults = {} as IResults;
-
       if (endIndex < responseFromDb.length) {
         results.next = {
           page: Number(page) + 1,
-          limit: Number(limit)
+          limit: Number(limit),
         };
       }
 
       if (startIndex > 0) {
         results.previous = {
           page: Number(page) - 1,
-          limit: Number(limit)
+          limit: Number(limit),
         };
       }
+
+      if (Number(limit) > responseFromDb.length) {
+        results.totalPages = 1;
+      } else {
+        results.totalPages = Math.floor(responseFromDb.length / Number(limit));
+      }
+
 
       results.results = responseFromDb.slice(startIndex, endIndex);
 
@@ -98,6 +106,19 @@ export default class UsersController {
       return response
         .status(500)
         .json({ message: 'Falha na requisição. Tente novamente' });
+    }
+  }
+
+  public async findById(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    try {
+      const user = await User.findById(id).select('-password');
+      console.log(user)
+      return response.status(200).json(user);
+    } catch (error) {
+      console.error(error);
+      return response.status(500).json({ message: 'Falha no servidor' });
     }
   }
 
