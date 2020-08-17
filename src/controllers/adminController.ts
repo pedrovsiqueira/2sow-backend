@@ -58,13 +58,13 @@ export default class AdminController {
         return response.status(400).json({ message: 'Senha inválida' });
       }
 
-      return response
-        .status(200)
-        .json({
-          token: genToken(user),
-        });
+      return response.status(200).json({
+        token: genToken(user),
+      });
     } catch (error) {
-      return response.status(500).json({ message: 'Erro ao tentar realizar o login' });
+      return response
+        .status(500)
+        .json({ message: 'Erro ao tentar realizar o login' });
     }
   }
 }

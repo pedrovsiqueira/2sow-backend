@@ -1,17 +1,16 @@
-import {Schema, Document, model} from 'mongoose'
+import { Schema, Document, model } from 'mongoose';
 
-
-interface IUser extends Document{
-  nome: string,
-  cpf: string,
-  email: string,
+interface IUser extends Document {
+  nome: string;
+  cpf: string;
+  email: string;
   endereco: {
-    cep: string,
-    rua: string,
-    numero: number,
-    bairro: string,
-    cidade: string
-  }
+    cep: string;
+    rua: string;
+    numero: number;
+    bairro: string;
+    cidade: string;
+  };
 }
 
 const UserSchema = new Schema({
@@ -56,4 +55,4 @@ const UserSchema = new Schema({
 
 const User = model<IUser>('User', UserSchema);
 
-export default User
+export default User;

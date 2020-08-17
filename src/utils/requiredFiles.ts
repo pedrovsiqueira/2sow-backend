@@ -1,4 +1,4 @@
-export const userDataArray =  [
+export const userDataArray = [
   'nome',
   'cpf',
   'email',
@@ -9,7 +9,4 @@ export const userDataArray =  [
   'cidade',
 ];
 
-export const adminDataArray = [
-  'email',
-  'password',
-];
+export const adminDataArray = ['email', 'password'];

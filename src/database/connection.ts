@@ -1,12 +1,12 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 import { MONGO_URI } from '../configs/env';
-const db = mongoose.connection
+const db = mongoose.connection;
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-  useFindAndModify: false
+  useFindAndModify: false,
 });
 
 db.once('open', () => {

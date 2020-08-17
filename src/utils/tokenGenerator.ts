@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken'
-import { IAdmin } from '../models/Admin'
+import jwt from 'jsonwebtoken';
+import { IAdmin } from '../models/Admin';
 import { JWT_SECRET } from '../configs/env';
 
 export const genToken = (user: IAdmin) => {
