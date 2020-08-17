@@ -89,7 +89,6 @@ export default class UsersController {
         results.totalPages = Math.floor(responseFromDb.length / Number(limit));
       }
 
-
       results.results = responseFromDb.slice(startIndex, endIndex);
 
       console.log(results);
@@ -102,9 +101,25 @@ export default class UsersController {
       return response.status(200).json(results);
     } catch (error) {
       console.log(error);
-      return response
-        .status(500)
-        .json({ message: 'Falha na requisição. Tente novamente' });
+      return response.status(500).json({
+        message: 'Falha na requisição. Tente novamente',
+      });
+    }
+  }
+
+  public async findById(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
+    const { id } = request.params;
+
+    try {
+      const user = await User.findById(id).select('-password');
+      console.log(user);
+      return response.status(200).json(user);
+    } catch (error) {
+      console.error(error);
+      return response.status(500).json({ message: 'Falha no servidor' });
     }
   }
 

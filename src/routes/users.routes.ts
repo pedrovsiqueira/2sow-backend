@@ -11,5 +11,6 @@ router.post('/', usersController.create);
 router.put('/:id', usersController.update);
 router.delete('/:id', usersController.delete);
 router.get('/', usersController.find);
+router.get('/:id', usersController.findById);
 
 export default router
