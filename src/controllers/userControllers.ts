@@ -86,7 +86,7 @@ export default class UsersController {
       if (Number(limit) > responseFromDb.length) {
         results.totalPages = 1;
       } else {
-        results.totalPages = Math.floor(responseFromDb.length / Number(limit));
+        results.totalPages = Math.ceil(responseFromDb.length / Number(limit));
       }
 
       results.results = responseFromDb.slice(startIndex, endIndex);
